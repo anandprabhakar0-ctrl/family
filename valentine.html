@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    img {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid rgba(255,255,255,0.6);
+      box-shadow: 0 0 40px rgba(255,255,255,0.7);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 8px 0;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      margin: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .yes {
+      background: #fff;
+      color: #ff4f7a;
+      font-weight: bold;
+    }
+
+    .no {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 22px;
+      animation: float 7s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(110vh); }
+      100% { transform: translateY(-10vh); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container" id="app">
+  <img src="meet.jpeg" alt="Meet ❤️">
+  <h1>Hey Beautiful 💖</h1>
+  <p>Will you be mine forever?</p>
+  <button class="yes" onclick="showCouple()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😜</button>
+</div>
+
+<script>
+  // Make NO button run away 😄
+  const noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("mouseover", () => {
+    noBtn.style.left = Math.random() * 80 + "%";
+    noBtn.style.top = Math.random() * 80 + "%";
+  });
+
+  function showCouple() {
+    document.getElementById("app").innerHTML = `
+      <img src="couple.jpeg" alt="Us ❤️">
+      <h1>Manmeet & Me 💕</h1>
+      <p>You gave me the most precious thing in my life ❤️</p>
+      <p>A love that turned into a beautiful family</p>
+      <p>Do you want to see the most precious gift of our love? 👶</p>
+      <button class="yes" onclick="showDaughter()">Yes 💖</button>
+    `;
+    createHearts();
+  }
+
+  function showDaughter() {
+    document.getElementById("app").innerHTML = `
+      <img src="adya.jpeg" alt="Adya ❤️">
+      <h1>Our Angel 👼</h1>
+      <p>This is Adya 💖</p>
+      <p>The most beautiful blessing of our love</p>
+      <p>My world begins and ends with you both ❤️</p>
+    `;
+    createHearts();
+  }
+
+  function createHearts() {
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * 100 + "%";
+      heart.style.animationDelay = Math.random() * 6 + "s";
+      document.body.appendChild(heart);
+    }
+  }
+</script>
+
+</body>
+</html>
+
